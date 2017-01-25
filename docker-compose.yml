@@ -1,0 +1,37 @@
+version: '2'
+services:
+
+  web:
+    build: ./
+    volumes:
+      - .:/src
+    ports:
+      - "3030:3030"
+      - "9229:9229" #debugger port
+      - "5858:5858" #debugger port
+
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3030
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: api_client_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: supersecure123
+  
+    depends_on:
+      - mysql
+
+    command: "npm start"
+
+  mysql:
+    environment:
+      MYSQL_DATABASE: api_client_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: supersecure123
+      MYSQL_ROOT_PASSWORD: secretsqlpass89721
+
+    image: mysql:5.7
+    volumes:
+        - ./dev/initdb:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"

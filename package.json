@@ -1,0 +1,39 @@
+{
+  "name": "service_1",
+  "version": "1.0.0",
+  "description": "An asteroid alert service",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "knex migrate:latest",
+    "test": "NODE_ENV=test mocha spec",
+    "start": "npm run migrate && nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lambrojos/asteroid_alert.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lambrojos/asteroid_alert/issues"
+  },
+  "homepage": "https://github.com/lambrojos/asteroid_alert#readme",
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "eslint": "^3.13.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "hapi": "^16.1.0",
+    "hapi-swagger": "^7.6.0",
+    "joi": "^10.2.0",
+    "knex": "^0.12.6",
+    "mysql": "^2.12.0",
+    "nasa-neows": "^2.0.1",
+    "nock": "^9.0.2",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "nock": "^9.0.2"
+  }
+}
